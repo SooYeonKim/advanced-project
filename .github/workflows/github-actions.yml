@@ -38,19 +38,3 @@ jobs:
           docker build -t hhplus-dev .
           docker tag hhplus-dev:latest ${{ secrets.ECR_URL }}/hhplus-dev:latest
           docker push ${{ secrets.ECR_URL }}/hhplus-dev:latest
-
-      - name: Render ECS task-definition
-        id: render-task-definition
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: .taskdefinition/task-definition.json
-          container-name: service-prod
-          image: ${{ steps.build-image.outputs.image }}
-
-      - name: Deploy Amazon ECS task-definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ${{ steps.render-task-definition.outputs.task-definition }}
-          service: hhplus-dev
-          cluster: cluster-hhplus-dev
-          wait-for-service-stability: true
