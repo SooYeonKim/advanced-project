@@ -2,7 +2,7 @@
   "containerDefinitions": [
     {
       "name": "service-prod",
-      "image": "684720208893.dkr.ecr.ap-northeast-2.amazonaws.com/hhplus-dev:latest",
+      "image": "684720208893.dkr.ecr.ap-northeast-2.amazonaws.com/hhplus-dev:7c3dd073df57d519de771fc215adcb029f5c903c",
       "cpu": 0,
       "portMappings": [
         {
