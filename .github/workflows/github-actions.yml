@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  PROFILE: dev
-
 jobs:
   build-push:
     name: Continuous Delivery develop
