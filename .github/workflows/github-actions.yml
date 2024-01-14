@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  PROFILE: dev
+
 jobs:
   build-push:
     name: Continuous Delivery develop
@@ -19,6 +22,9 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew build
